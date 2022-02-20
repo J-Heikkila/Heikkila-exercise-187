@@ -1,9 +1,3 @@
-//AUTHOR: Joseph Heikkila
-//COURSE: CPT 187
-//PURPOSE: Tracks inventory numbers and manages inventory functions
-//CREATEDATE: 2/16/2022
-package edu.cpt.heikkila.exercise6;
-
 //imports
 import java.util.Scanner;
 import java.io.FileInputStream;
