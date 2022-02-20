@@ -1,0 +1,70 @@
+//AUTHOR: Joseph Heikkila
+//COURSE: CPT 187
+//PURPOSE: Writes output to a file to recall and access at later time
+//CREATEDATE: 2/16/2022
+package edu.cpt.heikkila.exercise6;
+
+//imports
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+//WriteOrder
+public class WriteOrder 
+{
+	//attributes
+	private boolean fileFoundFlag;
+	private String masterFileName;
+	private int recordCount = 0;
+	
+	//Constructor
+	WriteOrder(String borrowedFileName)
+	{
+		masterFileName = borrowedFileName;
+	}//END Constructor
+	
+	//Setters
+	
+	//Writes record to the File (appends file)
+	public void setWriteOrder(int borrowedItemID, String borrowedItemName, double borrowedItemPrice, int borrowedQuantity, double borrowedOrderCost)
+	{
+		//Try block
+		try 
+		{
+			PrintWriter filePW = new PrintWriter(new FileWriter(masterFileName, true));
+			filePW.printf("%n%d\t%s\t%f\t%d\t%f", borrowedItemID, borrowedItemName, borrowedItemPrice, borrowedQuantity, borrowedOrderCost);
+			
+			fileFoundFlag = true;
+			
+			recordCount++;
+			
+			filePW.close();
+		}//END Try block
+		//catch block
+		catch (IOException ex)
+		{
+			fileFoundFlag = false; //fixed 2/11
+		}//END of catch
+	}//END appending the file
+	
+	//Getters
+	
+	//Get file found
+	public boolean getFileFoundFlag()
+	{
+		return fileFoundFlag;
+	}//END file found
+	
+	//Get file name
+	public String getFileName()
+	{
+		return masterFileName;
+	}//end file name
+	
+	//get record count
+	public int getRecordCount()
+	{
+		return recordCount;
+	}//end record count
+
+}//END WriteOrder
